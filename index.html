@@ -1,0 +1,1842 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>framework API documentation</title>
+<meta name="description" content="Contains classes and functions for usage in LaTeX documents with provided parser (parse.py).
+How to use parser:
+```
+python3 parser.py file_name
+```
+…" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>framework</code></h1>
+</header>
+<section id="section-intro">
+<p>Contains classes and functions for usage in LaTeX documents with provided parser (parse.py).
+How to use parser: </p>
+<pre><code>python3 parser.py file_name
+</code></pre>
+<p>where <code>file_name</code> - path to your LaTeX document.
+In result, new LaTeX document will be generated with name <code>file_name_new</code></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Contains classes and functions for usage in LaTeX documents with provided parser (parse.py).
+How to use parser: 
+```
+python3 parser.py file_name
+```
+where `file_name` - path to your LaTeX document.
+In result, new LaTeX document will be generated with name `file_name_new`
+&#34;&#34;&#34;
+
+import sympy
+import itertools
+from sympy import latex
+from multipledispatch import dispatch
+from rpn_to_infix import *
+
+class TexMathOp(object):
+    &#34;&#34;&#34;Basic math operations for symbolic objects.&#34;&#34;&#34;
+    def __init__(self, arg):
+
+        if type(arg) == TexMathOp:
+            arg = arg.base_name
+        else:
+            pass
+        
+        self.base_name = arg
+        import sympy
+        self.sym = sympy.symbols(self.base_name)
+
+    def __add__(self, other):
+
+        if type(other) in classes:
+            return TexExpr(self.get_val() + other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;+&#39;])#self.get_str() + other.get_str() + [&#39;+&#39;])
+        else:
+            return TexExpr(self.get_val() + sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;+&#39;])
+
+    def __pow__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() ** other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;**&#39;])#self.get_str() + other.get_str() + [&#39;**&#39;])
+        else:
+            return TexExpr(self.get_val() ** sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;**&#39;])
+
+    def __sub__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() - other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;-&#39;])#self.get_str() + other.get_str() + [&#39;-&#39;])
+        else:
+            return TexExpr(self.get_val() + sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;-&#39;])
+
+    def __mul__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() * other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;*&#39;])#self.get_str() + other.get_str() + [&#39;*&#39;])
+        else:
+            return TexExpr(self.get_val() * sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;*&#39;])
+
+    def __truediv__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() / other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;/&#39;])#self.get_str() + other.get_str() + [&#39;/&#39;])
+        else:
+            return TexExpr(self.get_val() / sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;/&#39;])
+
+    def __floordiv__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() // other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;//&#39;])#self.get_str() + other.get_str() + [&#39;//&#39;])
+        else:
+            return TexExpr(self.get_val() // sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;//&#39;])
+
+    def __mod__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() % other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;%&#39;])#self.get_str() + other.get_str() + [&#39;%&#39;])
+        else:
+            return TexExpr(self.get_val() % sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;%&#39;])
+
+    def __rshift__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &gt;&gt; other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&gt;&gt;&#39;])#self.get_str() + other.get_str() + [&#39;&gt;&gt;&#39;])
+        else:
+            return TexExpr(self.get_val() &gt;&gt; sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&gt;&gt;&#39;])
+
+    def __lshift__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &lt;&lt; other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&lt;&lt;&#39;])#self.get_str() + other.get_str() + [&#39;&lt;&lt;&#39;])
+        else:
+            return TexExpr(self.get_val() &lt;&lt; sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&lt;&lt;&#39;])
+
+    def __and__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &amp; other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&amp;&#39;])#self.get_str() + other.get_str() + [&#39;&amp;&#39;])
+        else:
+            return TexExpr(self.get_val() &amp; sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&amp;&#39;])
+
+    def __or__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() | other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;|&#39;])#self.get_str() + other.get_str() + [&#39;|&#39;])
+        else:
+            return TexExpr(self.get_val() | sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;|&#39;])
+
+    def __xor__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() ^ other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;^&#39;])#self.get_str() + other.get_str() + [&#39;^&#39;])
+        else:
+            return TexExpr(self.get_val() ^ sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;^&#39;])
+
+    def __lt__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &lt; other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&lt;&#39;])#self.get_str() + other.get_str() + [&#39;&lt;&#39;])
+        else:
+            return TexExpr(self.get_val() &lt; sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&lt;&#39;])
+
+    def __le__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &lt;= other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&lt;=&#39;])#self.get_str() + other.get_str() + [&#39;&lt;=&#39;])
+        else:
+            return TexExpr(self.get_val() &lt;= sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&lt;=&#39;])
+
+    def __gt__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &gt; other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&gt;&#39;])#self.get_str() + other.get_str() + [&#39;&gt;&#39;])
+        else:
+            return TexExpr(self.get_val() &gt; sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&gt;&#39;])
+
+    def __ge__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &gt;= other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&gt;=&#39;])#self.get_str() + other.get_str() + [&#39;&gt;=&#39;])
+        else:
+            return TexExpr(self.get_val() &gt;= sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&gt;=&#39;])
+
+    def __eq__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() == other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;==&#39;])#self.get_str() + other.get_str() + [&#39;==&#39;])
+        else:
+            return TexExpr(self.get_val() == sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;==&#39;])
+
+    def __ne__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() != other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;!=&#39;])#self.get_str() + other.get_str() + [&#39;!=&#39;])
+        else:
+            return TexExpr(self.get_val() != sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;!=&#39;])
+
+    def __neg__(self):
+        return TexExpr(-self.get_val(), [*self.get_polis(), &#39;-u&#39;])#self.get_str() + [&#39;-u&#39;])
+
+    def __pos__(self):
+        return TexExpr(+self.get_val(), [*self.get_polis(), &#39;+u&#39;])#self.get_str() + [&#39;+u&#39;])
+
+    def __invert__(self):
+        return TexExpr(~self.get_val(), [*self.get_polis(), &#39;~u&#39;])#self.get_str() + [&#39;~u&#39;])
+
+class TexSymbol(TexMathOp):
+    &#34;&#34;&#34;
+    Class, meant to create and use different kind of symbols.\n
+    ### Init args:
+        arg: str - symbol to be represented
+    ### Examples:\n 
+        x = TexSymbol(&#39;x&#39;)
+    &#34;&#34;&#34;
+
+    def hat(self):
+        &#34;&#34;&#34;Adds hat to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;hat&#39;)
+        return self
+
+    def check(self):
+        &#34;&#34;&#34;Adds check to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;check&#39;)
+        return self
+
+    def tilde(self):
+        &#34;&#34;&#34;Adds tilde to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;tilde&#39;)
+        return self
+
+    def acute(self):
+        &#34;&#34;&#34;Adds acute to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;acute&#39;)
+        return self
+
+    def grave(self):
+        &#34;&#34;&#34;Adds grave to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;grave&#39;)
+        return self
+
+    def dot(self):
+        &#34;&#34;&#34;Adds dot to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;dot&#39;)
+        return self
+
+    def ddot(self):
+        &#34;&#34;&#34;Adds two dots to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;ddot&#39;)
+        return self
+
+    def dddot(self):
+        &#34;&#34;&#34;Adds three dots to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;dddot&#39;)
+        return self
+
+    def ddddot(self):
+        &#34;&#34;&#34;Adds four dots to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;ddddot&#39;)
+        return self
+
+    def breve(self):
+        &#34;&#34;&#34;Adds breve to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;breve&#39;)
+        return self
+
+    def bar(self):
+        &#34;&#34;&#34;Adds bar to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;bar&#39;)
+        return self
+
+    def vec(self):
+        &#34;&#34;&#34;Adds vec to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;vec&#39;)
+        return self
+
+    #def get_str(self):
+    #    return [self.base_name]
+
+    #def get_val(self):
+    #    return self.sym
+    
+    #def get_polis(self):
+    #    return [self]
+
+    def __repr__(self):
+        return self.sym.__repr__()
+
+    def __str__(self):
+        return self.sym.__str__()
+
+
+class TexExpr(TexMathOp):
+    &#34;&#34;&#34;
+    Class, generated after any arithmetic operation to basic object (TexSymbol, TexFraction etc.). Less likely to be 
+    initialized directly by user then by operations with basic objects.\n
+    ### Init args:
+        ```arg: str``` - expression to be represented
+    ### Examples:\n 
+    ```
+        x = TexSymbol(&#39;x&#39;)
+        y = TexSymbol(&#39;y&#39;)
+        expr1 = (x + y*2)
+
+        expr2 = TexExpr(&#34;x + y*2&#34;)   # may lead to some errors
+    ```
+    &#34;&#34;&#34;
+    
+    def __init__(self, arg, str_=None):
+        #super(TexExpr, self).__init__()
+
+        if type(arg) == str:
+            self.expr = sympy.sympify(arg)
+        else:
+            self.expr = arg
+        self.polis = []
+        if str_ != None:
+            self.polis += str_
+        self._strict = None
+
+    #def get_str(self):
+    #    return self.polis
+
+    #def get_val(self):
+    #    return self.expr
+    
+    #def get_polis(self):
+    #    return self.polis
+
+    def __repr__(self):
+        return self.expr.__repr__()
+
+    def __str__(self):
+        return self.expr.__str__()
+    
+    def float(self, lim=None):
+        &#34;&#34;&#34;Returns float number with `lim` numbers after point.&#34;&#34;&#34;
+        if (type(self.expr) == int or type(self.expr) == float or 
+            type(self.expr) == sympy.core.numbers.Float or
+            type(self.expr) == sympy.core.numbers.Integer):
+            return TexNumber(self.expr).float(lim)
+        
+        else:
+            return None ##
+
+    def strict(self):
+        &#34;&#34;&#34;
+        Makes strict order of arguments, like in initialization.
+        Usage: `expr.strict()`
+        &#34;&#34;&#34;
+        polis = []
+        self.is_strict = True
+        for x in self.polis:
+            if type(x) in classes:
+                polis.append(latex(x))
+            else:
+                polis.append(x)
+        self._strict = rpn_to_infix(polis)
+        return self
+        
+    def diff(self, args=None):
+        &#34;&#34;&#34;
+        Returns function differential.
+        Args: `args: list` - list of arguments to be diffed by.
+        &#34;&#34;&#34;
+        return sympy.diff(self.expr, *args)
+        
+    #def __call__(self, x):
+    #    return self.expr.subs()
+
+class TexNumber(TexMathOp):
+    &#34;&#34;&#34;
+    Class, representing numbers.
+    ### Init args:
+        ```arg: str``` - number as string or any python type
+    ### Examples:\n 
+    ```
+        x = TexNumber(1)
+        y = TexSymbol(&#39;1.5431&#39;)
+        y.float(2)  # 1.54
+    ```
+    &#34;&#34;&#34;
+    def __init__(self, arg):
+        #super(TexNumber, self).__init__()
+
+        self.num = sympy.sympify(arg)
+        self.str = str(self.num)
+
+    #def get_str(self):
+    #    return [self.str]
+
+    #def get_val(self):
+    #    return self.num
+
+    def float(self, lim=None):
+        &#34;&#34;&#34;Returns float number with `lim` numbers after point.&#34;&#34;&#34;
+        if lim == None:
+            return float(self.num)
+        else:
+            return float(&#34;{:.2f}&#34;.format(self.num, lim=lim))
+        
+    #def get_polis(self):
+    #    return [self]
+
+    def __repr__(self):
+        return self.num.__repr__()
+
+    def __str__(self):
+        return self.num.__str__()
+
+class TexFraction(TexMathOp):
+    &#34;&#34;&#34;
+    Class, representing fractions.
+    ### Init args:
+        ```arg: str``` - most likely to be a string, or TexObject
+    ### Examples:\n 
+    ```
+        x = TexFraction(&#39;3/4&#39;)
+    ```
+    &#34;&#34;&#34;
+    def __init__(self, arg):
+        #super(TexNumber, self).__init__()
+
+        self.num = sympy.sympify(arg)
+        self.str = str(self.num)
+        self._slash = False
+
+    #def get_str(self):
+    #    return [self.str]
+
+    #def get_val(self):
+    #    return self.num
+
+    def slash(self):
+        &#34;&#34;&#34;
+        Fraction with slash.
+        Needs \\usepackage{xfrac}
+        &#34;&#34;&#34;
+        self._slash = True
+        return self
+
+    def float(self, lim=None):
+        &#34;&#34;&#34;Returns float number with `lim` numbers after point.&#34;&#34;&#34;
+        if type(self.num) != sympy.core.numbers.Rational:
+            # сделать нормальное сообщение об ошибке
+            print(&#39;TexFraction.float(): incompatible type, expected Rational, got: &#39;, type(self.num))
+            exit(1)
+        if lim == None:
+            return float(self.num)
+        else:
+            return float(&#34;{:.2f}&#34;.format(self.num, lim=lim))
+
+    def line(self):
+        &#34;&#34;&#34;Fraction with fraction line. Set by default.&#34;&#34;&#34;
+        self._slash = False
+        return self
+    
+    #def get_polis(self):
+    #    return [self]
+
+    def __repr__(self):
+        return self.num.__repr__()
+
+    def __str__(self):
+        return self.num.__str__()
+
+class TexMatrix(TexMathOp):
+    &#34;&#34;&#34;
+    Class, representing matrices.
+    ### Init args:
+        ```arg: list``` - list, may be string
+    ### Examples:\n 
+    ```
+        x1 = TexMatrix(&#39;[[1, -1], [3, 4]]&#39;)
+        x2 = TexMatrix([[1, 0], [0, 0]])
+    ```
+    &#34;&#34;&#34;
+    def __init__(self, arg):
+        #super(TexNumber, self).__init__()
+
+        self.mat = sympy.Matrix(sympy.sympify(str(arg)))
+        self.str = str(self.mat)            ##проблема
+        self.brackets = &#39;[]&#39;
+
+    #def get_str(self):
+    #    return [self.str]
+
+    #def get_val(self):
+    #    return self.mat
+    
+    def round_brackets(self):
+        &#34;&#34;&#34;Sets round brackets to matrix.&#34;&#34;&#34;
+        self.brackets = &#39;()&#39;
+        return self
+    
+    def straight_brackets(self):
+        &#34;&#34;&#34;Sets straight brackets to matrix.&#34;&#34;&#34;
+        self.brackets = &#39;||&#39;
+        return self
+    
+    #def get_polis(self):
+    #    return [self]
+    
+    def __repr__(self):
+        return self.mat.__repr__()
+
+    def __str__(self):
+        return self.mat.__str__()
+    
+
+class TexFunction(TexMathOp):
+    &#34;&#34;&#34;
+    Class, representing functions.
+    ### Init args:
+        ```name = &#39;f&#39;: str```\n
+        ```f_args = None: list[str]```\n
+        ```val = None: str```
+    ### Examples:\n 
+    ```
+        F = TexFunction(name=&#39;F&#39;, f_args=[&#39;x&#39;], val=&#39;sin(x)&#39;)
+        G = TexFunction(name=&#39;G&#39;)
+    ```
+    &#34;&#34;&#34;
+    def __init__(self, name = &#39;f&#39;, f_args = None, val = None):
+
+        self.name = name
+        self.f_args = f_args
+        self.d_cnt = 0
+        self.val = val
+
+        if val == None:
+            self.ftype = &#39;unvalued&#39;
+            if f_args != None:
+                self.func = sympy.Function(name)(*f_args)
+            else:
+                self.func = sympy.Function(name)
+        else:
+            self.ftype = &#39;valued&#39;
+            self.func = TexExpr(val)
+
+        self.str = str(self.func)
+
+    def drop_arg(self):
+        &#34;&#34;&#34;Hides argument from function.&#34;&#34;&#34;
+        return sympy.Function(self.name)
+    
+    def diff(self, args=None):
+        &#34;&#34;&#34;Function differential, like d/dx.
+        Args: `args: list` - list of arguments to be diffed by.&#34;&#34;&#34;
+        if args == None: args = self.f_args
+        return self.func.diff(*args)
+    
+    def d(self, n=1):
+        &#34;&#34;&#34;Function differential in short form, like f&#39;. Full derivative.
+        Args: `n: int` - diff degree.&#34;&#34;&#34;
+        self.d_cnt = n
+        return self
+        
+    #def get_str(self):
+    #    return [self.str]
+
+    #def get_val(self):
+    #    return self.func
+    
+    #def get_polis(self):
+    #    return [self]
+    
+    def __repr__(self):
+        return self.func.__repr__()
+
+    def __str__(self):
+        return self.func.__str__()
+    
+    def __call__(self, x):
+    
+        return TexExpr(self.val).expr.subs(self.f_args[0], x)
+
+
+classes = [TexFraction, TexNumber, TexExpr, TexSymbol, TexMatrix, TexFunction]
+
+@dispatch(object)
+def latex(x):
+    return sympy.latex(x)
+
+@dispatch(TexSymbol)
+def latex(x):
+    return sympy.latex(x.sym)
+
+@dispatch(TexExpr)
+def latex(x):
+    if x._strict:
+        return x._strict.replace(&#39;*&#39;, &#39;&#39;).replace(&#39;(&#39;, &#39;\\left(&#39;).replace(&#39;)&#39;, &#39;\\right)&#39;)
+    else:
+        text = sympy.sympify(x.get_val())
+    return sympy.latex(text)
+
+@dispatch(TexFraction)
+def latex(x):
+    text = sympy.latex(x.num)
+    if x._slash:
+        text = text.replace(&#39;\\frac&#39;, &#39;\\sfrac&#39;)
+    return text
+
+@dispatch(TexMatrix)
+def latex(x):
+    
+    if x.brackets == &#39;()&#39;:
+        return sympy.latex(x.get_val(), mat_delim=&#39;(&#39;, mat_str=&#39;matrix&#39;)
+    elif x.brackets == &#39;||&#39;:
+        return sympy.latex(sympy.Determinant(sympy.Matrix(x.get_val())), mat_delim=&#39;&#39;)
+
+    return sympy.latex(x.get_val())
+
+@dispatch(TexFunction)
+def latex(x):
+
+    if x.d_cnt:
+        # может быть просто функция, но если название функции из 2 или больше букв - operatorname
+        str_ = sympy.latex(x.func)
+        tmp = str_.find(x.name) + len(x.name) - 1
+
+        if x.d_cnt &gt; 3:
+            diff_deg = &#34;^{(&#34; + str(x.d_cnt) + &#34;)}&#34;
+        else:
+            diff_deg = &#34;&#39;&#34;*x.d_cnt
+
+        if tmp + 1 &lt; len(str_) and str_[tmp + 1] == &#39;}&#39;:
+            return str_[:tmp + 2] + diff_deg + str_[tmp + 2:]
+        else:
+            return str_[:tmp + 1] + diff_deg + str_[tmp + 1:]
+    
+    return sympy.latex(x.func)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="framework.TexExpr"><code class="flex name class">
+<span>class <span class="ident">TexExpr</span></span>
+<span>(</span><span>arg, str_=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class, generated after any arithmetic operation to basic object (TexSymbol, TexFraction etc.). Less likely to be
+initialized directly by user then by operations with basic objects.</p>
+<h3 id="init-args">Init args:</h3>
+<pre><code>```arg: str``` - expression to be represented
+</code></pre>
+<h3 id="examples">Examples:</h3>
+<pre><code>    x = TexSymbol('x')
+    y = TexSymbol('y')
+    expr1 = (x + y*2)
+
+    expr2 = TexExpr(&quot;x + y*2&quot;)   # may lead to some errors
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TexExpr(TexMathOp):
+    &#34;&#34;&#34;
+    Class, generated after any arithmetic operation to basic object (TexSymbol, TexFraction etc.). Less likely to be 
+    initialized directly by user then by operations with basic objects.\n
+    ### Init args:
+        ```arg: str``` - expression to be represented
+    ### Examples:\n 
+    ```
+        x = TexSymbol(&#39;x&#39;)
+        y = TexSymbol(&#39;y&#39;)
+        expr1 = (x + y*2)
+
+        expr2 = TexExpr(&#34;x + y*2&#34;)   # may lead to some errors
+    ```
+    &#34;&#34;&#34;
+    
+    def __init__(self, arg, str_=None):
+        #super(TexExpr, self).__init__()
+
+        if type(arg) == str:
+            self.expr = sympy.sympify(arg)
+        else:
+            self.expr = arg
+        self.polis = []
+        if str_ != None:
+            self.polis += str_
+        self._strict = None
+
+    #def get_str(self):
+    #    return self.polis
+
+    #def get_val(self):
+    #    return self.expr
+    
+    #def get_polis(self):
+    #    return self.polis
+
+    def __repr__(self):
+        return self.expr.__repr__()
+
+    def __str__(self):
+        return self.expr.__str__()
+    
+    def float(self, lim=None):
+        &#34;&#34;&#34;Returns float number with `lim` numbers after point.&#34;&#34;&#34;
+        if (type(self.expr) == int or type(self.expr) == float or 
+            type(self.expr) == sympy.core.numbers.Float or
+            type(self.expr) == sympy.core.numbers.Integer):
+            return TexNumber(self.expr).float(lim)
+        
+        else:
+            return None ##
+
+    def strict(self):
+        &#34;&#34;&#34;
+        Makes strict order of arguments, like in initialization.
+        Usage: `expr.strict()`
+        &#34;&#34;&#34;
+        polis = []
+        self.is_strict = True
+        for x in self.polis:
+            if type(x) in classes:
+                polis.append(latex(x))
+            else:
+                polis.append(x)
+        self._strict = rpn_to_infix(polis)
+        return self
+        
+    def diff(self, args=None):
+        &#34;&#34;&#34;
+        Returns function differential.
+        Args: `args: list` - list of arguments to be diffed by.
+        &#34;&#34;&#34;
+        return sympy.diff(self.expr, *args)
+        
+    #def __call__(self, x):
+    #    return self.expr.subs()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="framework.TexMathOp" href="#framework.TexMathOp">TexMathOp</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="framework.TexExpr.diff"><code class="name flex">
+<span>def <span class="ident">diff</span></span>(<span>self, args=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns function differential.
+Args: <code>args: list</code> - list of arguments to be diffed by.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def diff(self, args=None):
+    &#34;&#34;&#34;
+    Returns function differential.
+    Args: `args: list` - list of arguments to be diffed by.
+    &#34;&#34;&#34;
+    return sympy.diff(self.expr, *args)</code></pre>
+</details>
+</dd>
+<dt id="framework.TexExpr.float"><code class="name flex">
+<span>def <span class="ident">float</span></span>(<span>self, lim=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns float number with <code>lim</code> numbers after point.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def float(self, lim=None):
+    &#34;&#34;&#34;Returns float number with `lim` numbers after point.&#34;&#34;&#34;
+    if (type(self.expr) == int or type(self.expr) == float or 
+        type(self.expr) == sympy.core.numbers.Float or
+        type(self.expr) == sympy.core.numbers.Integer):
+        return TexNumber(self.expr).float(lim)
+    
+    else:
+        return None ##</code></pre>
+</details>
+</dd>
+<dt id="framework.TexExpr.strict"><code class="name flex">
+<span>def <span class="ident">strict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Makes strict order of arguments, like in initialization.
+Usage: <code>expr.strict()</code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def strict(self):
+    &#34;&#34;&#34;
+    Makes strict order of arguments, like in initialization.
+    Usage: `expr.strict()`
+    &#34;&#34;&#34;
+    polis = []
+    self.is_strict = True
+    for x in self.polis:
+        if type(x) in classes:
+            polis.append(latex(x))
+        else:
+            polis.append(x)
+    self._strict = rpn_to_infix(polis)
+    return self</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="framework.TexFraction"><code class="flex name class">
+<span>class <span class="ident">TexFraction</span></span>
+<span>(</span><span>arg)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class, representing fractions.</p>
+<h3 id="init-args">Init args:</h3>
+<pre><code>```arg: str``` - most likely to be a string, or TexObject
+</code></pre>
+<h3 id="examples">Examples:</h3>
+<pre><code>    x = TexFraction('3/4')
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TexFraction(TexMathOp):
+    &#34;&#34;&#34;
+    Class, representing fractions.
+    ### Init args:
+        ```arg: str``` - most likely to be a string, or TexObject
+    ### Examples:\n 
+    ```
+        x = TexFraction(&#39;3/4&#39;)
+    ```
+    &#34;&#34;&#34;
+    def __init__(self, arg):
+        #super(TexNumber, self).__init__()
+
+        self.num = sympy.sympify(arg)
+        self.str = str(self.num)
+        self._slash = False
+
+    #def get_str(self):
+    #    return [self.str]
+
+    #def get_val(self):
+    #    return self.num
+
+    def slash(self):
+        &#34;&#34;&#34;
+        Fraction with slash.
+        Needs \\usepackage{xfrac}
+        &#34;&#34;&#34;
+        self._slash = True
+        return self
+
+    def float(self, lim=None):
+        &#34;&#34;&#34;Returns float number with `lim` numbers after point.&#34;&#34;&#34;
+        if type(self.num) != sympy.core.numbers.Rational:
+            # сделать нормальное сообщение об ошибке
+            print(&#39;TexFraction.float(): incompatible type, expected Rational, got: &#39;, type(self.num))
+            exit(1)
+        if lim == None:
+            return float(self.num)
+        else:
+            return float(&#34;{:.2f}&#34;.format(self.num, lim=lim))
+
+    def line(self):
+        &#34;&#34;&#34;Fraction with fraction line. Set by default.&#34;&#34;&#34;
+        self._slash = False
+        return self
+    
+    #def get_polis(self):
+    #    return [self]
+
+    def __repr__(self):
+        return self.num.__repr__()
+
+    def __str__(self):
+        return self.num.__str__()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="framework.TexMathOp" href="#framework.TexMathOp">TexMathOp</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="framework.TexFraction.float"><code class="name flex">
+<span>def <span class="ident">float</span></span>(<span>self, lim=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns float number with <code>lim</code> numbers after point.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def float(self, lim=None):
+    &#34;&#34;&#34;Returns float number with `lim` numbers after point.&#34;&#34;&#34;
+    if type(self.num) != sympy.core.numbers.Rational:
+        # сделать нормальное сообщение об ошибке
+        print(&#39;TexFraction.float(): incompatible type, expected Rational, got: &#39;, type(self.num))
+        exit(1)
+    if lim == None:
+        return float(self.num)
+    else:
+        return float(&#34;{:.2f}&#34;.format(self.num, lim=lim))</code></pre>
+</details>
+</dd>
+<dt id="framework.TexFraction.line"><code class="name flex">
+<span>def <span class="ident">line</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fraction with fraction line. Set by default.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def line(self):
+    &#34;&#34;&#34;Fraction with fraction line. Set by default.&#34;&#34;&#34;
+    self._slash = False
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexFraction.slash"><code class="name flex">
+<span>def <span class="ident">slash</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fraction with slash.
+Needs \usepackage{xfrac}</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def slash(self):
+    &#34;&#34;&#34;
+    Fraction with slash.
+    Needs \\usepackage{xfrac}
+    &#34;&#34;&#34;
+    self._slash = True
+    return self</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="framework.TexFunction"><code class="flex name class">
+<span>class <span class="ident">TexFunction</span></span>
+<span>(</span><span>name='f', f_args=None, val=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class, representing functions.</p>
+<h3 id="init-args">Init args:</h3>
+<pre><code>```name = 'f': str```
+
+```f_args = None: list[str]```
+
+```val = None: str```
+</code></pre>
+<h3 id="examples">Examples:</h3>
+<pre><code>    F = TexFunction(name='F', f_args=['x'], val='sin(x)')
+    G = TexFunction(name='G')
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TexFunction(TexMathOp):
+    &#34;&#34;&#34;
+    Class, representing functions.
+    ### Init args:
+        ```name = &#39;f&#39;: str```\n
+        ```f_args = None: list[str]```\n
+        ```val = None: str```
+    ### Examples:\n 
+    ```
+        F = TexFunction(name=&#39;F&#39;, f_args=[&#39;x&#39;], val=&#39;sin(x)&#39;)
+        G = TexFunction(name=&#39;G&#39;)
+    ```
+    &#34;&#34;&#34;
+    def __init__(self, name = &#39;f&#39;, f_args = None, val = None):
+
+        self.name = name
+        self.f_args = f_args
+        self.d_cnt = 0
+        self.val = val
+
+        if val == None:
+            self.ftype = &#39;unvalued&#39;
+            if f_args != None:
+                self.func = sympy.Function(name)(*f_args)
+            else:
+                self.func = sympy.Function(name)
+        else:
+            self.ftype = &#39;valued&#39;
+            self.func = TexExpr(val)
+
+        self.str = str(self.func)
+
+    def drop_arg(self):
+        &#34;&#34;&#34;Hides argument from function.&#34;&#34;&#34;
+        return sympy.Function(self.name)
+    
+    def diff(self, args=None):
+        &#34;&#34;&#34;Function differential, like d/dx.
+        Args: `args: list` - list of arguments to be diffed by.&#34;&#34;&#34;
+        if args == None: args = self.f_args
+        return self.func.diff(*args)
+    
+    def d(self, n=1):
+        &#34;&#34;&#34;Function differential in short form, like f&#39;. Full derivative.
+        Args: `n: int` - diff degree.&#34;&#34;&#34;
+        self.d_cnt = n
+        return self
+        
+    #def get_str(self):
+    #    return [self.str]
+
+    #def get_val(self):
+    #    return self.func
+    
+    #def get_polis(self):
+    #    return [self]
+    
+    def __repr__(self):
+        return self.func.__repr__()
+
+    def __str__(self):
+        return self.func.__str__()
+    
+    def __call__(self, x):
+    
+        return TexExpr(self.val).expr.subs(self.f_args[0], x)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="framework.TexMathOp" href="#framework.TexMathOp">TexMathOp</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="framework.TexFunction.d"><code class="name flex">
+<span>def <span class="ident">d</span></span>(<span>self, n=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function differential in short form, like f'. Full derivative.
+Args: <code>n: int</code> - diff degree.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def d(self, n=1):
+    &#34;&#34;&#34;Function differential in short form, like f&#39;. Full derivative.
+    Args: `n: int` - diff degree.&#34;&#34;&#34;
+    self.d_cnt = n
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexFunction.diff"><code class="name flex">
+<span>def <span class="ident">diff</span></span>(<span>self, args=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function differential, like d/dx.
+Args: <code>args: list</code> - list of arguments to be diffed by.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def diff(self, args=None):
+    &#34;&#34;&#34;Function differential, like d/dx.
+    Args: `args: list` - list of arguments to be diffed by.&#34;&#34;&#34;
+    if args == None: args = self.f_args
+    return self.func.diff(*args)</code></pre>
+</details>
+</dd>
+<dt id="framework.TexFunction.drop_arg"><code class="name flex">
+<span>def <span class="ident">drop_arg</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Hides argument from function.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def drop_arg(self):
+    &#34;&#34;&#34;Hides argument from function.&#34;&#34;&#34;
+    return sympy.Function(self.name)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="framework.TexMathOp"><code class="flex name class">
+<span>class <span class="ident">TexMathOp</span></span>
+<span>(</span><span>arg)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Basic math operations for symbolic objects.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TexMathOp(object):
+    &#34;&#34;&#34;Basic math operations for symbolic objects.&#34;&#34;&#34;
+    def __init__(self, arg):
+
+        if type(arg) == TexMathOp:
+            arg = arg.base_name
+        else:
+            pass
+        
+        self.base_name = arg
+        import sympy
+        self.sym = sympy.symbols(self.base_name)
+
+    def __add__(self, other):
+
+        if type(other) in classes:
+            return TexExpr(self.get_val() + other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;+&#39;])#self.get_str() + other.get_str() + [&#39;+&#39;])
+        else:
+            return TexExpr(self.get_val() + sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;+&#39;])
+
+    def __pow__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() ** other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;**&#39;])#self.get_str() + other.get_str() + [&#39;**&#39;])
+        else:
+            return TexExpr(self.get_val() ** sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;**&#39;])
+
+    def __sub__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() - other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;-&#39;])#self.get_str() + other.get_str() + [&#39;-&#39;])
+        else:
+            return TexExpr(self.get_val() + sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;-&#39;])
+
+    def __mul__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() * other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;*&#39;])#self.get_str() + other.get_str() + [&#39;*&#39;])
+        else:
+            return TexExpr(self.get_val() * sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;*&#39;])
+
+    def __truediv__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() / other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;/&#39;])#self.get_str() + other.get_str() + [&#39;/&#39;])
+        else:
+            return TexExpr(self.get_val() / sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;/&#39;])
+
+    def __floordiv__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() // other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;//&#39;])#self.get_str() + other.get_str() + [&#39;//&#39;])
+        else:
+            return TexExpr(self.get_val() // sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;//&#39;])
+
+    def __mod__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() % other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;%&#39;])#self.get_str() + other.get_str() + [&#39;%&#39;])
+        else:
+            return TexExpr(self.get_val() % sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;%&#39;])
+
+    def __rshift__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &gt;&gt; other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&gt;&gt;&#39;])#self.get_str() + other.get_str() + [&#39;&gt;&gt;&#39;])
+        else:
+            return TexExpr(self.get_val() &gt;&gt; sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&gt;&gt;&#39;])
+
+    def __lshift__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &lt;&lt; other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&lt;&lt;&#39;])#self.get_str() + other.get_str() + [&#39;&lt;&lt;&#39;])
+        else:
+            return TexExpr(self.get_val() &lt;&lt; sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&lt;&lt;&#39;])
+
+    def __and__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &amp; other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&amp;&#39;])#self.get_str() + other.get_str() + [&#39;&amp;&#39;])
+        else:
+            return TexExpr(self.get_val() &amp; sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&amp;&#39;])
+
+    def __or__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() | other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;|&#39;])#self.get_str() + other.get_str() + [&#39;|&#39;])
+        else:
+            return TexExpr(self.get_val() | sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;|&#39;])
+
+    def __xor__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() ^ other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;^&#39;])#self.get_str() + other.get_str() + [&#39;^&#39;])
+        else:
+            return TexExpr(self.get_val() ^ sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;^&#39;])
+
+    def __lt__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &lt; other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&lt;&#39;])#self.get_str() + other.get_str() + [&#39;&lt;&#39;])
+        else:
+            return TexExpr(self.get_val() &lt; sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&lt;&#39;])
+
+    def __le__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &lt;= other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&lt;=&#39;])#self.get_str() + other.get_str() + [&#39;&lt;=&#39;])
+        else:
+            return TexExpr(self.get_val() &lt;= sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&lt;=&#39;])
+
+    def __gt__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &gt; other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&gt;&#39;])#self.get_str() + other.get_str() + [&#39;&gt;&#39;])
+        else:
+            return TexExpr(self.get_val() &gt; sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&gt;&#39;])
+
+    def __ge__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() &gt;= other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;&gt;=&#39;])#self.get_str() + other.get_str() + [&#39;&gt;=&#39;])
+        else:
+            return TexExpr(self.get_val() &gt;= sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;&gt;=&#39;])
+
+    def __eq__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() == other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;==&#39;])#self.get_str() + other.get_str() + [&#39;==&#39;])
+        else:
+            return TexExpr(self.get_val() == sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;==&#39;])
+
+    def __ne__(self, other):
+        if type(other) in classes:
+            return TexExpr(self.get_val() != other.get_val(), 
+                           [*self.get_polis(), *other.get_polis(), &#39;!=&#39;])#self.get_str() + other.get_str() + [&#39;!=&#39;])
+        else:
+            return TexExpr(self.get_val() != sympy.sympify(other), 
+                           self.get_str() + [sympy.sympify(other)] + [&#39;!=&#39;])
+
+    def __neg__(self):
+        return TexExpr(-self.get_val(), [*self.get_polis(), &#39;-u&#39;])#self.get_str() + [&#39;-u&#39;])
+
+    def __pos__(self):
+        return TexExpr(+self.get_val(), [*self.get_polis(), &#39;+u&#39;])#self.get_str() + [&#39;+u&#39;])
+
+    def __invert__(self):
+        return TexExpr(~self.get_val(), [*self.get_polis(), &#39;~u&#39;])#self.get_str() + [&#39;~u&#39;])</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="framework.TexExpr" href="#framework.TexExpr">TexExpr</a></li>
+<li><a title="framework.TexFraction" href="#framework.TexFraction">TexFraction</a></li>
+<li><a title="framework.TexFunction" href="#framework.TexFunction">TexFunction</a></li>
+<li><a title="framework.TexMatrix" href="#framework.TexMatrix">TexMatrix</a></li>
+<li><a title="framework.TexNumber" href="#framework.TexNumber">TexNumber</a></li>
+<li><a title="framework.TexSymbol" href="#framework.TexSymbol">TexSymbol</a></li>
+</ul>
+</dd>
+<dt id="framework.TexMatrix"><code class="flex name class">
+<span>class <span class="ident">TexMatrix</span></span>
+<span>(</span><span>arg)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class, representing matrices.</p>
+<h3 id="init-args">Init args:</h3>
+<pre><code>```arg: list``` - list, may be string
+</code></pre>
+<h3 id="examples">Examples:</h3>
+<pre><code>    x1 = TexMatrix('[[1, -1], [3, 4]]')
+    x2 = TexMatrix([[1, 0], [0, 0]])
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TexMatrix(TexMathOp):
+    &#34;&#34;&#34;
+    Class, representing matrices.
+    ### Init args:
+        ```arg: list``` - list, may be string
+    ### Examples:\n 
+    ```
+        x1 = TexMatrix(&#39;[[1, -1], [3, 4]]&#39;)
+        x2 = TexMatrix([[1, 0], [0, 0]])
+    ```
+    &#34;&#34;&#34;
+    def __init__(self, arg):
+        #super(TexNumber, self).__init__()
+
+        self.mat = sympy.Matrix(sympy.sympify(str(arg)))
+        self.str = str(self.mat)            ##проблема
+        self.brackets = &#39;[]&#39;
+
+    #def get_str(self):
+    #    return [self.str]
+
+    #def get_val(self):
+    #    return self.mat
+    
+    def round_brackets(self):
+        &#34;&#34;&#34;Sets round brackets to matrix.&#34;&#34;&#34;
+        self.brackets = &#39;()&#39;
+        return self
+    
+    def straight_brackets(self):
+        &#34;&#34;&#34;Sets straight brackets to matrix.&#34;&#34;&#34;
+        self.brackets = &#39;||&#39;
+        return self
+    
+    #def get_polis(self):
+    #    return [self]
+    
+    def __repr__(self):
+        return self.mat.__repr__()
+
+    def __str__(self):
+        return self.mat.__str__()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="framework.TexMathOp" href="#framework.TexMathOp">TexMathOp</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="framework.TexMatrix.round_brackets"><code class="name flex">
+<span>def <span class="ident">round_brackets</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sets round brackets to matrix.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def round_brackets(self):
+    &#34;&#34;&#34;Sets round brackets to matrix.&#34;&#34;&#34;
+    self.brackets = &#39;()&#39;
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexMatrix.straight_brackets"><code class="name flex">
+<span>def <span class="ident">straight_brackets</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sets straight brackets to matrix.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def straight_brackets(self):
+    &#34;&#34;&#34;Sets straight brackets to matrix.&#34;&#34;&#34;
+    self.brackets = &#39;||&#39;
+    return self</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="framework.TexNumber"><code class="flex name class">
+<span>class <span class="ident">TexNumber</span></span>
+<span>(</span><span>arg)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class, representing numbers.</p>
+<h3 id="init-args">Init args:</h3>
+<pre><code>```arg: str``` - number as string or any python type
+</code></pre>
+<h3 id="examples">Examples:</h3>
+<pre><code>    x = TexNumber(1)
+    y = TexSymbol('1.5431')
+    y.float(2)  # 1.54
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TexNumber(TexMathOp):
+    &#34;&#34;&#34;
+    Class, representing numbers.
+    ### Init args:
+        ```arg: str``` - number as string or any python type
+    ### Examples:\n 
+    ```
+        x = TexNumber(1)
+        y = TexSymbol(&#39;1.5431&#39;)
+        y.float(2)  # 1.54
+    ```
+    &#34;&#34;&#34;
+    def __init__(self, arg):
+        #super(TexNumber, self).__init__()
+
+        self.num = sympy.sympify(arg)
+        self.str = str(self.num)
+
+    #def get_str(self):
+    #    return [self.str]
+
+    #def get_val(self):
+    #    return self.num
+
+    def float(self, lim=None):
+        &#34;&#34;&#34;Returns float number with `lim` numbers after point.&#34;&#34;&#34;
+        if lim == None:
+            return float(self.num)
+        else:
+            return float(&#34;{:.2f}&#34;.format(self.num, lim=lim))
+        
+    #def get_polis(self):
+    #    return [self]
+
+    def __repr__(self):
+        return self.num.__repr__()
+
+    def __str__(self):
+        return self.num.__str__()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="framework.TexMathOp" href="#framework.TexMathOp">TexMathOp</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="framework.TexNumber.float"><code class="name flex">
+<span>def <span class="ident">float</span></span>(<span>self, lim=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns float number with <code>lim</code> numbers after point.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def float(self, lim=None):
+    &#34;&#34;&#34;Returns float number with `lim` numbers after point.&#34;&#34;&#34;
+    if lim == None:
+        return float(self.num)
+    else:
+        return float(&#34;{:.2f}&#34;.format(self.num, lim=lim))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="framework.TexSymbol"><code class="flex name class">
+<span>class <span class="ident">TexSymbol</span></span>
+<span>(</span><span>arg)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class, meant to create and use different kind of symbols.</p>
+<h3 id="init-args">Init args:</h3>
+<pre><code>arg: str - symbol to be represented
+</code></pre>
+<h3 id="examples">Examples:</h3>
+<pre><code>x = TexSymbol('x')
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TexSymbol(TexMathOp):
+    &#34;&#34;&#34;
+    Class, meant to create and use different kind of symbols.\n
+    ### Init args:
+        arg: str - symbol to be represented
+    ### Examples:\n 
+        x = TexSymbol(&#39;x&#39;)
+    &#34;&#34;&#34;
+
+    def hat(self):
+        &#34;&#34;&#34;Adds hat to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;hat&#39;)
+        return self
+
+    def check(self):
+        &#34;&#34;&#34;Adds check to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;check&#39;)
+        return self
+
+    def tilde(self):
+        &#34;&#34;&#34;Adds tilde to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;tilde&#39;)
+        return self
+
+    def acute(self):
+        &#34;&#34;&#34;Adds acute to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;acute&#39;)
+        return self
+
+    def grave(self):
+        &#34;&#34;&#34;Adds grave to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;grave&#39;)
+        return self
+
+    def dot(self):
+        &#34;&#34;&#34;Adds dot to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;dot&#39;)
+        return self
+
+    def ddot(self):
+        &#34;&#34;&#34;Adds two dots to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;ddot&#39;)
+        return self
+
+    def dddot(self):
+        &#34;&#34;&#34;Adds three dots to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;dddot&#39;)
+        return self
+
+    def ddddot(self):
+        &#34;&#34;&#34;Adds four dots to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;ddddot&#39;)
+        return self
+
+    def breve(self):
+        &#34;&#34;&#34;Adds breve to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;breve&#39;)
+        return self
+
+    def bar(self):
+        &#34;&#34;&#34;Adds bar to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;bar&#39;)
+        return self
+
+    def vec(self):
+        &#34;&#34;&#34;Adds vec to symbol.&#34;&#34;&#34;
+        self.sym = sympy.symbols(self.base_name + &#39;vec&#39;)
+        return self
+
+    #def get_str(self):
+    #    return [self.base_name]
+
+    #def get_val(self):
+    #    return self.sym
+    
+    #def get_polis(self):
+    #    return [self]
+
+    def __repr__(self):
+        return self.sym.__repr__()
+
+    def __str__(self):
+        return self.sym.__str__()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="framework.TexMathOp" href="#framework.TexMathOp">TexMathOp</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="framework.TexSymbol.acute"><code class="name flex">
+<span>def <span class="ident">acute</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds acute to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def acute(self):
+    &#34;&#34;&#34;Adds acute to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;acute&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.bar"><code class="name flex">
+<span>def <span class="ident">bar</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds bar to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def bar(self):
+    &#34;&#34;&#34;Adds bar to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;bar&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.breve"><code class="name flex">
+<span>def <span class="ident">breve</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds breve to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def breve(self):
+    &#34;&#34;&#34;Adds breve to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;breve&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.check"><code class="name flex">
+<span>def <span class="ident">check</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds check to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check(self):
+    &#34;&#34;&#34;Adds check to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;check&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.ddddot"><code class="name flex">
+<span>def <span class="ident">ddddot</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds four dots to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ddddot(self):
+    &#34;&#34;&#34;Adds four dots to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;ddddot&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.dddot"><code class="name flex">
+<span>def <span class="ident">dddot</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds three dots to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dddot(self):
+    &#34;&#34;&#34;Adds three dots to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;dddot&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.ddot"><code class="name flex">
+<span>def <span class="ident">ddot</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds two dots to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ddot(self):
+    &#34;&#34;&#34;Adds two dots to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;ddot&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.dot"><code class="name flex">
+<span>def <span class="ident">dot</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds dot to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dot(self):
+    &#34;&#34;&#34;Adds dot to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;dot&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.grave"><code class="name flex">
+<span>def <span class="ident">grave</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds grave to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def grave(self):
+    &#34;&#34;&#34;Adds grave to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;grave&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.hat"><code class="name flex">
+<span>def <span class="ident">hat</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds hat to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hat(self):
+    &#34;&#34;&#34;Adds hat to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;hat&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.tilde"><code class="name flex">
+<span>def <span class="ident">tilde</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds tilde to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def tilde(self):
+    &#34;&#34;&#34;Adds tilde to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;tilde&#39;)
+    return self</code></pre>
+</details>
+</dd>
+<dt id="framework.TexSymbol.vec"><code class="name flex">
+<span>def <span class="ident">vec</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds vec to symbol.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def vec(self):
+    &#34;&#34;&#34;Adds vec to symbol.&#34;&#34;&#34;
+    self.sym = sympy.symbols(self.base_name + &#39;vec&#39;)
+    return self</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="framework.TexExpr" href="#framework.TexExpr">TexExpr</a></code></h4>
+<ul class="">
+<li><code><a title="framework.TexExpr.diff" href="#framework.TexExpr.diff">diff</a></code></li>
+<li><code><a title="framework.TexExpr.float" href="#framework.TexExpr.float">float</a></code></li>
+<li><code><a title="framework.TexExpr.strict" href="#framework.TexExpr.strict">strict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="framework.TexFraction" href="#framework.TexFraction">TexFraction</a></code></h4>
+<ul class="">
+<li><code><a title="framework.TexFraction.float" href="#framework.TexFraction.float">float</a></code></li>
+<li><code><a title="framework.TexFraction.line" href="#framework.TexFraction.line">line</a></code></li>
+<li><code><a title="framework.TexFraction.slash" href="#framework.TexFraction.slash">slash</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="framework.TexFunction" href="#framework.TexFunction">TexFunction</a></code></h4>
+<ul class="">
+<li><code><a title="framework.TexFunction.d" href="#framework.TexFunction.d">d</a></code></li>
+<li><code><a title="framework.TexFunction.diff" href="#framework.TexFunction.diff">diff</a></code></li>
+<li><code><a title="framework.TexFunction.drop_arg" href="#framework.TexFunction.drop_arg">drop_arg</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="framework.TexMathOp" href="#framework.TexMathOp">TexMathOp</a></code></h4>
+</li>
+<li>
+<h4><code><a title="framework.TexMatrix" href="#framework.TexMatrix">TexMatrix</a></code></h4>
+<ul class="">
+<li><code><a title="framework.TexMatrix.round_brackets" href="#framework.TexMatrix.round_brackets">round_brackets</a></code></li>
+<li><code><a title="framework.TexMatrix.straight_brackets" href="#framework.TexMatrix.straight_brackets">straight_brackets</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="framework.TexNumber" href="#framework.TexNumber">TexNumber</a></code></h4>
+<ul class="">
+<li><code><a title="framework.TexNumber.float" href="#framework.TexNumber.float">float</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="framework.TexSymbol" href="#framework.TexSymbol">TexSymbol</a></code></h4>
+<ul class="two-column">
+<li><code><a title="framework.TexSymbol.acute" href="#framework.TexSymbol.acute">acute</a></code></li>
+<li><code><a title="framework.TexSymbol.bar" href="#framework.TexSymbol.bar">bar</a></code></li>
+<li><code><a title="framework.TexSymbol.breve" href="#framework.TexSymbol.breve">breve</a></code></li>
+<li><code><a title="framework.TexSymbol.check" href="#framework.TexSymbol.check">check</a></code></li>
+<li><code><a title="framework.TexSymbol.ddddot" href="#framework.TexSymbol.ddddot">ddddot</a></code></li>
+<li><code><a title="framework.TexSymbol.dddot" href="#framework.TexSymbol.dddot">dddot</a></code></li>
+<li><code><a title="framework.TexSymbol.ddot" href="#framework.TexSymbol.ddot">ddot</a></code></li>
+<li><code><a title="framework.TexSymbol.dot" href="#framework.TexSymbol.dot">dot</a></code></li>
+<li><code><a title="framework.TexSymbol.grave" href="#framework.TexSymbol.grave">grave</a></code></li>
+<li><code><a title="framework.TexSymbol.hat" href="#framework.TexSymbol.hat">hat</a></code></li>
+<li><code><a title="framework.TexSymbol.tilde" href="#framework.TexSymbol.tilde">tilde</a></code></li>
+<li><code><a title="framework.TexSymbol.vec" href="#framework.TexSymbol.vec">vec</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
